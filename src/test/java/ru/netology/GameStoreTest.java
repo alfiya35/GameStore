@@ -23,7 +23,30 @@ public class GameStoreTest {
         //assertTrue(store.games.contains(game));
     }
 
-     //другие ваши тесты
+    @Test
+    public void shouldAddPlayTimeFirstPlay() {
+        GameStore store = new GameStore();
+        Player firstPlayer = new Player("First");
+        store.addPlayTime(firstPlayer.getName(), 3);
+
+        //int actual = store.playedTime.get(firstPlayer.getName());
+        //int expected = 3;
+
+        //assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldAddPlayTimeNotFirstPlay() {
+        GameStore store = new GameStore();
+        Player firstPlayer = new Player("First");
+        store.addPlayTime(firstPlayer.getName(), 3);
+        store.addPlayTime(firstPlayer.getName(), 4);
+
+        //int actual = store.playedTime.get(firstPlayer.getName());
+        //int expected = 7;
+
+        assertEquals(expected, actual);
+    }
 
 
 }
