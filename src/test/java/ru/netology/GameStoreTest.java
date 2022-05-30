@@ -11,8 +11,22 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-        assertTrue(store.containsGame(game));
+        assertTrue(store.games.contains(game));
     }
+    @Test
+    public void shouldAddPlayTimeFirstPlay() {
+
+        GameStore store = new GameStore();
+        Player firstPlayer = new Player("Ferst");
+
+        store.addPlayTime(firstPlayer.getName(),3);
+
+        int actual = store.playedTime.get(firstPlayer.getName());
+        int expected = 3;
+
+        assertEquals(expected,actual);
+    }
+
 
      //другие ваши тесты
 

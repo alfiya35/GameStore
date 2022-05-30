@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameStore {
-    private List<Game> games = new ArrayList<>();
+public class GameStore { //каталог игр
+    protected List<Game> games = new ArrayList<>();
 
 
     /**
@@ -14,7 +14,7 @@ public class GameStore {
      * Ключ - имя игрока
      * Значение - суммарное количество часов в игры этого каталога
      */
-    private Map<String, Integer> playedTime = new HashMap<>();
+    protected Map<String, Integer> playedTime = new HashMap<>();
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
@@ -74,6 +74,13 @@ public class GameStore {
      * за играми этого каталога
      */
     public int getSumPlayedTime() {
-        return 0;
+        int sum = 0;
+        for (int value : playedTime.values()) {
+            sum += value;
+        }
+        return sum;
     }
 }
+
+
+

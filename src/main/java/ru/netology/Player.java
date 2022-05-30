@@ -15,7 +15,7 @@ public class Player {
         this.name = name;
     }
 
-    public String getName() { //Геттер
+    public String getName() { //Геттер, примиает имя игрока
         return name;
     }
 
