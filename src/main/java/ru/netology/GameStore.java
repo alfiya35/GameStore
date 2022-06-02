@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GameStore {
-    private List<Game> games = new ArrayList<>();
+    private List<Game> games = new ArrayList<>(); //каталог игр
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
      * Ключ - имя игрока

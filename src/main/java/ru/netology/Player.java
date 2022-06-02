@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-    private String name;  //Имя игрока
+    protected String name;  //Имя игрока
 
     /** информация о том, в какую игру сколько часов было сыграно
     ключ - игра
     значение - суммарное количество часов игры в эту игру */
-    private Map<Game, Integer> playedTime = new HashMap<>();
+    protected Map<Game, Integer> playedTime = new HashMap<>();
 
     public Player(String name) { //Конструктор игрока, принимающий в значения имя игрока
         this.name = name;
@@ -26,6 +26,7 @@ public class Player {
     public void installGame(Game game) {
         playedTime.put(game, 0);
     }
+
 
     /** игрок играет в игру game на протяжении hours часов
     об этом нужно сообщить объекту-каталогу игр, откуда была установлена игра
