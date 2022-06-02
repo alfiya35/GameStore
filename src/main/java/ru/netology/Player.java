@@ -30,6 +30,10 @@ public class Player {
         playedTime.put(game, 0);
     }
 
+
+
+
+
     /**
      * игрок играет в игру game на протяжении hours часов
      * об этом нужно сообщить объекту-каталогу игр, откуда была установлена игра
@@ -70,6 +74,7 @@ public class Player {
      Если в игры этого жанра не играли, возвращается null */
     //todo add return game
     public Game mostPlayerByGenre(String genre) {
+
         return null;
     }
 }
