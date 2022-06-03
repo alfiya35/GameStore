@@ -21,7 +21,6 @@ public class Player {
         return name;
     }
 
-
     /**
      * добавление игры игроку
      * если игра уже была, никаких изменений происходить не должно
@@ -29,10 +28,6 @@ public class Player {
     public void installGame(Game game) {
         playedTime.put(game, 0);
     }
-
-
-
-
 
     /**
      * игрок играет в игру game на протяжении hours часов
@@ -51,11 +46,10 @@ public class Player {
         return playedTime.get(game);
     }
 
-
-
-
-    /** Метод принимает жанр игры (одно из полей объекта игры) и
-     суммирует время, проигранное во все игры этого жанра этим игроком */
+    /**
+     * Метод принимает жанр игры (одно из полей объекта игры) и
+     * суммирует время, проигранное во все игры этого жанра этим игроком
+     */
     public int sumGenre(String genre) {
         int sum = 0;
         for (Game game : playedTime.keySet()) {
@@ -68,13 +62,12 @@ public class Player {
         return sum;
     }
 
-
-
-    /** Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
-     Если в игры этого жанра не играли, возвращается null */
+    /**
+     * Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
+     * Если в игры этого жанра не играли, возвращается null
+     */
     //todo add return game
     public Game mostPlayerByGenre(String genre) {
-
         return null;
     }
 }

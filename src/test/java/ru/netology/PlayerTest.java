@@ -25,13 +25,11 @@ public class PlayerTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-
         Player player = new Player("Petya");
         player.installGame(game);//добавление игры игроку
 
         assertTrue(store.games.contains(game));
     }
-
 
     @Test
     public void shouldPlayGame() { //тест-м метод play
@@ -40,7 +38,6 @@ public class PlayerTest {
 
         Player player = new Player("Petya");
         player.installGame(game);//добавление игры игроку
-
 
         int expected = 4;
         int actual = player.play(game, 4); // суммирует время, проигранное во все игры этого жанра этим игроком
