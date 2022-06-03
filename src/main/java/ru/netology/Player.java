@@ -26,7 +26,7 @@ public class Player {
      * если игра уже была, никаких изменений происходить не должно
      */
     public void installGame(Game game) {
-        if (playedTime.containsKey(game) == false) {
+        if (!playedTime.containsKey(game)) {
             playedTime.put(game, 0);
         }
     }
@@ -59,9 +59,9 @@ public class Player {
                 sum += playedTime.get(game);
             }
         }
-        if (sum == 0){
+        if (sum == 0) { // не играл в игры этого жанра
             throw new RuntimeException("Игрок не играл в игры этого жанра");
-        }else{
+        } else {
             return sum;
         }
     }
