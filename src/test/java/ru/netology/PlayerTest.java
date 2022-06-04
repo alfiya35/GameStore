@@ -3,8 +3,37 @@ package ru.netology;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class PlayerTest {
-    //
+    @Test
+    public void shouldInstallGame() { //добавление игры игроку
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+        Player player = new Player("Petya");
+        player.installGame(game);//добавление игры игроку
+
+
+    }
+    @Test
+    public void shouldInstallGameIfRepeat() { //добавление игры игроку,если игра уже была
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Бравар страр", "Аркады");
+
+        Player player = new Player("Petya");
+        player.installGame(game);//добавление игры игроку
+        player.installGame(game1);
+        player.installGame(game2);
+
+        Boolean expected = false;
+        Boolean actual = store.containsGame(game1);
+
+        assertEquals(expected,actual);
+    }
+
     @Test
     public void shouldSumGenreIfOneGame() { //суммирует часы, если играет одну игра
         GameStore store = new GameStore();
@@ -54,31 +83,6 @@ public class PlayerTest {
         assertThrows(RuntimeException.class, () -> {player.play(game2,5);});
     }
 
-//    @Test
-//    public void shouldInstallGame() { //добавление игры игроку
-//        GameStore store = new GameStore();
-//        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-//
-//        Player player = new Player("Petya");
-//        player.installGame(game);//добавление игры игроку
-//
-//        assertTrue(store.games.contains(game));
-//    }
-
-
-
-//    @Test
-//    public void shouldPlayGameIfOneGame() { //тест-м метод play
-//        GameStore store = new GameStore();
-//        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-//
-//        Player player = new Player("Petya");
-//        player.installGame(game);//добавление игры игроку
-//
-//        int expected = 4;
-//        int actual = player.play(game, 4); // суммирует время, проигранное во все игры этого жанра этим игроком
-//        assertEquals(expected, actual);
-//    }
 
     @Test
     public void shouldReturnGame() { //возвращает игру однгого жанра, в которую играли больше всего
@@ -99,7 +103,7 @@ public class PlayerTest {
 
 
         Game actual = player.mostPlayerByGenre(game.getGenre());
-        assertEquals(actual,game2);
+        assertEquals(actual,game1);
     }
 
     @Test
