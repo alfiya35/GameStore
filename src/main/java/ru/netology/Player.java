@@ -72,6 +72,15 @@ public class Player {
      */
     //todo add return game
     public Game mostPlayerByGenre(String genre) {
-        return null;
+        Game mostPlayedGame = null;
+        int time = 0;
+        for (Game game : playedTime.keySet()) {
+            if (game.getGenre().equals(genre)) {
+                if (playedTime.get(genre) >= time){
+                    mostPlayedGame = game;
+                }
+            }
+        }
+        return mostPlayedGame;
     }
 }

@@ -14,8 +14,8 @@ public class PlayerTest {
         Player player = new Player("Petya");
         player.installGame(game);//добавление игры игроку
 
-
     }
+
     @Test
     public void shouldInstallGameIfRepeat() { //добавление игры игроку,если игра уже была
         GameStore store = new GameStore();
