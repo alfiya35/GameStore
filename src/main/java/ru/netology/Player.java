@@ -11,7 +11,7 @@ public class Player {
      * ключ - игра
      * значение - суммарное количество часов игры в эту игру
      */
-    private Map<Game, Integer> playedTime = new HashMap<>();
+    public Map<Game, Integer> playedTime = new HashMap<>();
 
     public Player(String name) { //Конструктор игрока, принимающий в значения имя игрока
         this.name = name;
@@ -76,8 +76,9 @@ public class Player {
         int time = 0;
         for (Game game : playedTime.keySet()) {
             if (game.getGenre().equals(genre)) {
-                if (playedTime.get(genre) >= time){
+                if (playedTime.get(game) >= time){
                     mostPlayedGame = game;
+                    time = playedTime.get(game);
                 }
             }
         }

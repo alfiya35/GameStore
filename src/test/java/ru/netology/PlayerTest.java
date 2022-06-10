@@ -127,9 +127,7 @@ public class PlayerTest {
         player.play(game3, 10);
 
 
-       Game actual = player.mostPlayerByGenre(game.getGenre());
-       assertEquals(actual,game2);
+        Game actual = player.mostPlayerByGenre(game.getGenre());
+        assertEquals(actual,game2);
     }
 }
-
-
