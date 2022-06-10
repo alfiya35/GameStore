@@ -67,6 +67,56 @@ public class GameStoreTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getMostPlayerWithNoPlayer() {
+        GameStore store = new GameStore();
+
+        String actual = store.getMostPlayer();
+
+        assertNull(actual);
+    }
+
+    @Test
+    public void getMostPlayerWithOnePlayerSmallTime() {
+        GameStore store = new GameStore();
+        store.playedTime.put("Ваня", 1);
+        String actual = store.getMostPlayer();
+        String expected = "Ваня";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMostPlayerWithOnePlayer() {
+        GameStore store = new GameStore();
+        store.playedTime.put("Ваня", 4);
+        String actual = store.getMostPlayer();
+        String expected = "Ваня";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMostPlayerWithTwoPlayers() {
+        GameStore store = new GameStore();
+        store.playedTime.put("Ваня", 4);
+        store.playedTime.put("Саша", 1);
+        String actual = store.getMostPlayer();
+        String expected = "Ваня";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMostPlayerWithSeveralPlayers() {
+        GameStore store = new GameStore();
+        store.playedTime.put("Ваня", 4);
+        store.playedTime.put("Саша", 1);
+        store.playedTime.put("Маша", 5);
+        store.playedTime.put("Аня", 2);
+        store.playedTime.put("Лиза", 2);
+        String actual = store.getMostPlayer();
+        String expected = "Маша";
+        assertEquals(expected, actual);
+    }
 }
 
 
