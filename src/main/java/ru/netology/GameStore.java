@@ -45,7 +45,7 @@ public class GameStore { //каталог игр
      */
     public void addPlayTime(String playerName, int hours) {
         if (playedTime.containsKey(playerName)) {
-            playedTime.put(playerName, playedTime.get(playerName) + hours);
+            playedTime.put(playerName, playedTime.get(playerName));
         } else {
             playedTime.put(playerName, hours);
         }
@@ -56,7 +56,7 @@ public class GameStore { //каталог игр
      * времени. Если игроков нет, то возвращется null
      */
     public String getMostPlayer() {
-        int mostTime = 0;
+        int mostTime = 1;
         String bestPlayer = null;
         for (String playerName : playedTime.keySet()) {
             int playerTime = playedTime.get(playerName);
