@@ -99,6 +99,15 @@ public class PlayerTest {
         assertThrows(RuntimeException.class, () -> {player.play(game2,5);});
     }
 
+    @Test
+    public void shouldSumGenreThrowExeption() { //исключение,если игру не добавили
+        GameStore store = new GameStore();
+        Player player = new Player("Petya");
+        Game game1 = store.publishGame("Бравар страр", "Ужасы");
+
+        assertThrows(RuntimeException.class, () -> {player.sumGenre("Аркады");});
+    }
+
 
     @Test
     public void shouldReturnGame() { //возвращает игру однгого жанра, в которую играли больше всего
@@ -141,7 +150,6 @@ public class PlayerTest {
         player.play(game1, 4);
         player.play(game2, 8);
         player.play(game3, 10);
-
 
         Game actual = player.mostPlayerByGenre(game.getGenre());
 

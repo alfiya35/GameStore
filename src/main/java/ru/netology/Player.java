@@ -13,7 +13,6 @@ public class Player {
      */
     public Map<Game, Integer> playedTime = new HashMap<>();
 
-
     public Player(String name) { //Конструктор игрока, принимающий в значения имя игрока
         this.name = name;
     }

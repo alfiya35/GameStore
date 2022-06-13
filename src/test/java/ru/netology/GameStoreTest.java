@@ -7,13 +7,22 @@ import org.junit.jupiter.api.Test;
 public class GameStoreTest {
 
     @Test
+    public void shouldReturnGameTitle() {
+
+        GameStore store = new GameStore();
+        Game game = new Game("Нетология Баттл Онлайн", "Аркады", store);
+        String expected = game.getTitle();
+        String actual = "Нетология Баттл Онлайн";
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldAddGameToEmptyList() {
 
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         assertTrue(store.games.contains(game));
-
     }
 
     @Test
@@ -23,16 +32,16 @@ public class GameStoreTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Game game1 = store.publishGame("Нетология курсовая", "Ужасы");
 
-        assertTrue(store.games.contains(game1) && store.games.contains(game1));
+        assertTrue(store.games.contains(game) && store.games.contains(game1));
     }
 
     @Test
     public void shouldCheckContainsGameAndGameExists() {
 
         GameStore store = new GameStore();
-        Game game = new Game("Нетология Баттл Онлайн", "Аркады", store);
-        store.games.add(game);
-        assertTrue(store.games.contains(game));
+        //Game game = new Game("Нетология Баттл Онлайн", "Аркады", store);
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        assertTrue(store.containsGame(game));
     }
 
     @Test
@@ -41,7 +50,7 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = new Game("Нетология Баттл Онлайн", "Аркады", store);
 
-        assertFalse(store.games.contains(game));
+        assertFalse(store.containsGame(game));
     }
 
     @Test
