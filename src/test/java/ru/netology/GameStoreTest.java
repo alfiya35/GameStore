@@ -11,8 +11,23 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-        //assertTrue(store.games.contains(game));
+        assertTrue(store.games.contains(game));
+
     }
+    @Test
+    public void shouldAddPlayTimeFirstPlay() {
+
+        GameStore store = new GameStore();
+        Player firstPlayer = new Player("Ferst");
+
+        store.addPlayTime(firstPlayer.getName(),3);
+
+        int actual = store.playedTime.get(firstPlayer.getName());
+        int expected = 3;
+
+        assertEquals(expected,actual);
+    }
+
 
     @Test
     public void shouldCheckContainsGame() {
@@ -21,18 +36,6 @@ public class GameStoreTest {
         Game game = new Game("Нетология Баттл Онлайн", "Аркады", store);
         //store.games.Add(game);
         //assertTrue(store.games.contains(game));
-    }
-
-    @Test
-    public void shouldAddPlayTimeFirstPlay() {
-        GameStore store = new GameStore();
-        Player firstPlayer = new Player("First");
-        store.addPlayTime(firstPlayer.getName(), 3);
-
-        //int actual = store.playedTime.get(firstPlayer.getName());
-        //int expected = 3;
-
-        //assertEquals(expected, actual);
     }
 
     @Test

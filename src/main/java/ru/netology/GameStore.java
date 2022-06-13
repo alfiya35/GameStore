@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameStore {
-    private List<Game> games = new ArrayList<>();
+
+public class GameStore { //каталог игр
+    protected List<Game> games = new ArrayList<>();
+
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
      * Ключ - имя игрока
      * Значение - суммарное количество часов в игры этого каталога
      */
-    private Map<String, Integer> playedTime = new HashMap<>();
-
+    protected Map<String, Integer> playedTime = new HashMap<>();
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
@@ -38,41 +39,49 @@ public class GameStore {
         return false;
     }
 
-    /**
-     * Регистрирует количество времени, которое проиграл игрок
-     * за игрой этого каталога. Игрок задаётся по имени. Время должно
-     * суммироваться с прошлым значением для этого игрока
-     */
-    public void addPlayTime(String playerName, int hours) {
-        if (playedTime.containsKey(playerName)) {
-            playedTime.put(playerName, playedTime.get(playerName));
-        } else {
-            playedTime.put(playerName, hours);
-        }
-    }
-
-    /**
-     * Ищет имя игрока, который играл в игры этого каталога больше всего
-     * времени. Если игроков нет, то возвращется null
-     */
-    public String getMostPlayer() {
-        int mostTime = 1;
-        String bestPlayer = null;
-        for (String playerName : playedTime.keySet()) {
-            int playerTime = playedTime.get(playerName);
-            if (playerTime > mostTime) {
-                mostTime = playerTime;
-                bestPlayer = playerName;
+        /**
+         * Регистрирует количество времени, которое проиграл игрок
+         * за игрой этого каталога. Игрок задаётся по имени. Время должно
+         * суммироваться с прошлым значением для этого игрока
+         */
+        public void addPlayTime (String playerName,int hours){
+            if (playedTime.containsKey(playerName)) {
+                playedTime.put(playerName, playedTime.get(playerName));
+            } else {
+                playedTime.put(playerName, hours);
             }
         }
-        return bestPlayer;
+
+        /**
+         * Ищет имя игрока, который играл в игры этого каталога больше всего
+         * времени. Если игроков нет, то возвращется null
+         */
+        public String getMostPlayer () {
+            int mostTime = 0;
+            String bestPlayer = null;
+            for (String playerName : playedTime.keySet()) {
+                int playerTime = playedTime.get(playerName);
+                if (playerTime > mostTime) {
+                    mostTime = playerTime;
+                    bestPlayer = playerName;
+                }
+            }
+            return bestPlayer;
+        }
+
+        /**
+         * Суммирует общее количество времени всех игроков, проведённого
+         * за играми этого каталога
+         */
+        public int getSumPlayedTime () {
+            int sum = 0;
+            for (int value : playedTime.values()) {
+                sum += value;
+            }
+            return sum;
+        }
     }
 
-    /**
-     * Суммирует общее количество времени всех игроков, проведённого
-     * за играми этого каталога
-     */
-    public int getSumPlayedTime() {
-        return 0;
-    }
-}
+
+
+
