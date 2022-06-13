@@ -13,6 +13,7 @@ public class Player {
      */
     public Map<Game, Integer> playedTime = new HashMap<>();
 
+
     public Player(String name) { //Конструктор игрока, принимающий в значения имя игрока
         this.name = name;
     }
@@ -54,7 +55,6 @@ public class Player {
      * Метод принимает жанр игры (одно из полей объекта игры) и
      * суммирует время, проигранное во все игры этого жанра этим игроком
      */
-
     public int sumGenre(String genre) {
         int sum = 0;
         for (Game game : playedTime.keySet()) {
@@ -69,6 +69,10 @@ public class Player {
         }
     }
 
+    /**
+     * Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
+     * Если в игры этого жанра не играли, возвращается null
+     */
     public Game mostPlayerByGenre(String genre) {
         Game mostPlayedGame = null;
         int time = 0;
