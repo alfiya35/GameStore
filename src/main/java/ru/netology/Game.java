@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Game { //Дата класс Игра. Хранит значения
     private final String title;//название игры
     private final String genre;//жанр игры
-    private final GameStore store;//магазин игры
+    private final GameStore store;//каталог игры(Каждая игра принадлежит какому-то каталогу)
 
     public Game(String title, String genre, GameStore store) { //конструктор с параметрами
         this.title = title;
@@ -36,7 +36,6 @@ public class Game { //Дата класс Игра. Хранит значени�
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(title, genre, store);
+    public int hashCode() {return Objects.hash(title, genre, store);
     }
 }
