@@ -2,30 +2,30 @@ package ru.netology;
 
 import java.util.Objects;
 
-public class Game {
-    private final String title;
-    private final String genre;
-    private final GameStore store;
+public class Game { //Дата класс Игра. Хранит значения
+    private final String title;//название игры
+    private final String genre;//жанр игры
+    private final GameStore store;//каталог игры(Каждая игра принадлежит какому-то каталогу)
 
-    public Game(String title, String genre, GameStore store) {
+    public Game(String title, String genre, GameStore store) { //конструктор с параметрами
         this.title = title;
         this.genre = genre;
         this.store = store;
     }
 
-    public String getTitle() {
+    public String getTitle() { //геттер д/названия игры
         return title;
     }
 
-    public String getGenre() {
+    public String getGenre() { //геттер д/жанра игры
         return genre;
     }
 
-    public GameStore getStore() {
+    public GameStore getStore() { //геттер д/магазина
         return store;
     }
 
-    @Override
+    @Override //иколс и хешкод д/сравнения
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -36,7 +36,6 @@ public class Game {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(title, genre, store);
+    public int hashCode() {return Objects.hash(title, genre, store);
     }
 }
