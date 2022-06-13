@@ -16,7 +16,6 @@ public class PlayerTest {
         assertTrue(store.games.contains(game));
 
     }
-
     @Test
     public void shouldInstallTwoGame() { //добавление двух игр игроку
         GameStore store = new GameStore();
