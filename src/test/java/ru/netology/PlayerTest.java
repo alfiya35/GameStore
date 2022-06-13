@@ -1,6 +1,7 @@
 package ru.netology;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -14,8 +15,28 @@ public class PlayerTest {
         Player player = new Player("Petya");
         player.installGame(game);//добавление игры игроку
 
+        assertTrue(store.games.contains(game));
 
     }
+
+    @Test
+    public void shouldInstallTwoGame() { //добавление двух игр игроку
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game1 = store.publishGame("Бравар страр", "Аркады");
+
+        Player player = new Player("Petya");
+        player.installGame(game);//добавление игры игроку
+        player.installGame(game1);
+
+        int actual = player.playedTime.size();
+        int expected = 2;
+        assertEquals(expected,actual);
+
+
+
+    }
+
     @Test
     public void shouldInstallGameIfRepeat() { //добавление игры игроку,если игра уже была
         GameStore store = new GameStore();
@@ -28,10 +49,9 @@ public class PlayerTest {
         player.installGame(game1);
         player.installGame(game2);
 
-        Boolean expected = false;
-        Boolean actual = store.containsGame(game1);
-
-        assertEquals(expected,actual);
+        int actual = player.playedTime.size();
+        int expected = 2;
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -47,6 +67,7 @@ public class PlayerTest {
         int actual = player.sumGenre(game.getGenre()); // суммирует время, проигранное во все игры этого жанра этим игроком
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfTwoGame() { //суммирует часы если играет две игры
         GameStore store = new GameStore();
@@ -65,6 +86,7 @@ public class PlayerTest {
         int actual = player.sumGenre(game.getGenre()); // суммирует время, проигранное во все игры этого жанра этим игроком
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfGameNotInstalled() { //исключение,если игру не добавили
         GameStore store = new GameStore();
@@ -80,7 +102,9 @@ public class PlayerTest {
         player.play(game, 3);//возвращает суммарное количество часов, проигранное в эту игру.
         player.play(game1, 4);
 
-        assertThrows(RuntimeException.class, () -> {player.play(game2,5);});
+        assertThrows(RuntimeException.class, () -> {
+            player.play(game2, 5);
+        });
     }
 
 
@@ -103,7 +127,7 @@ public class PlayerTest {
 
 
         Game actual = player.mostPlayerByGenre(game.getGenre());
-        assertEquals(actual,game1);
+        assertEquals(actual, game2);
     }
 
     @Test
@@ -112,7 +136,7 @@ public class PlayerTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Game game1 = store.publishGame("Бравар страр", "Аркады");
         Game game2 = store.publishGame("Игра", "Аркады");
-        Game game3= store.publishGame("Игра1", "Жанр");
+        Game game3 = store.publishGame("Игра1", "Жанр");
 
 
         Player player = new Player("Petya");
@@ -127,8 +151,8 @@ public class PlayerTest {
         player.play(game3, 10);
 
 
-       Game actual = player.mostPlayerByGenre(game.getGenre());
-       assertEquals(actual,game2);
+        Game actual = player.mostPlayerByGenre(game.getGenre());
+        assertEquals(actual, game2);
     }
 }
 
