@@ -44,6 +44,7 @@ public class PlayerTest {
         player.installGame(game1);
         player.installGame(game2);
 
+
         int actual = player.playedTime.size();
         int expected = 2;
         assertEquals(expected, actual);
