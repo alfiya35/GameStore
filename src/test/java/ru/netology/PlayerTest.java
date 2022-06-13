@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-
 public class PlayerTest {
     @Test
     public void shouldInstallGame() { //добавление игры игроку
@@ -32,9 +30,6 @@ public class PlayerTest {
         int actual = player.playedTime.size();
         int expected = 2;
         assertEquals(expected,actual);
-
-
-
     }
 
     @Test
@@ -102,9 +97,7 @@ public class PlayerTest {
         player.play(game, 3);//возвращает суммарное количество часов, проигранное в эту игру.
         player.play(game1, 4);
 
-        assertThrows(RuntimeException.class, () -> {
-            player.play(game2, 5);
-        });
+        assertThrows(RuntimeException.class, () -> {player.play(game2,5);});
     }
 
 
@@ -152,8 +145,7 @@ public class PlayerTest {
 
 
         Game actual = player.mostPlayerByGenre(game.getGenre());
-        assertEquals(actual, game2);
+
+        assertEquals(actual,game2);
     }
 }
-
-
