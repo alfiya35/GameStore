@@ -39,6 +39,7 @@ public class GameStore {
         return false;
     }
 
+
     /**
      * Регистрирует количество времени, которое проиграл игрок
      * за игрой этого каталога. Игрок задаётся по имени. Время должно
@@ -50,7 +51,6 @@ public class GameStore {
         } else {
             playedTime.put(playerName, hours);
         }
-    }
 
     /**
      * Ищет имя игрока, который играл в игры этого каталога больше всего
@@ -65,22 +65,22 @@ public class GameStore {
                 mostTime = playerTime;
                 bestPlayer = playerName;
             }
+            return bestPlayer;
         }
-        return bestPlayer;
+
+        /**
+         * Суммирует общее количество времени всех игроков, проведённого
+         * за играми этого каталога
+         */
+        public int getSumPlayedTime () {
+            int sum = 0;
+            for (int value : playedTime.values()) {
+                sum += value;
+            }
+            return sum;
+        }
     }
 
-    /**
-     * Суммирует общее количество времени всех игроков, проведённого
-     * за играми этого каталога
-     */
-    public int getSumPlayedTime() {
-        int sum = 0;
-        for (int value : playedTime.values()) {
-            sum += value;
-        }
-        return sum;
-    }
-}
 
 
 
